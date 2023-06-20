@@ -1,7 +1,7 @@
 import * as http from 'http';
 import { Task } from './types/Task';
 import { Container } from './types/Container';
-import { TaskStat } from './types/TaskStats';
+import { TaskStats } from './types/TaskStats';
 import { ContainerStats } from './types/ContainerStats';
 
 export class ECSMetadata {
@@ -31,7 +31,7 @@ export class ECSMetadata {
     return await this._get('');
   }
 
-  public async getTaskStats(): Promise<TaskStat> {
+  public async getTaskStats(): Promise<TaskStats> {
     return await this._get('task/stats');
   }
 

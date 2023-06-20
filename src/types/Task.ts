@@ -1,6 +1,6 @@
 import { Container } from "./Container";
 
-export interface Tasl {
+export interface Task {
   Cluster: string
   TaskARN: string
   Family: string

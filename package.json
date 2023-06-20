@@ -1,14 +1,17 @@
 {
   "name": "aws-ecs-metadata",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "A library to extract ECS Task metadata from running containers",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p .",
     "check": "npm run compile && npm run lint:all",
     "compile:watch": "tsc --watch --noEmit --skipLibCheck",
     "compile": "tsc --noEmit --skipLibCheck"
   },
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/the-curve-consulting/aws-ecs-metadata.git"

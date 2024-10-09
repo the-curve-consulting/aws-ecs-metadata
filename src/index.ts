@@ -14,11 +14,23 @@ export class ECSMetadata {
 
   private async _get(path: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      http.get(`${this._baseUrl}/${path}`, (res) => {
+      const req = http.get(`${this._baseUrl}/${path}`, (res) => {
         let data = '';
         res.on('data', (chunk) => data += chunk);
         res.on('end', () => resolve(JSON.parse(data)));
         res.on('error', (err) => reject(err));
+      });
+
+      req.on('error', (err) => reject(err));
+
+      req.on('timeout', () => {
+        req.destroy();
+        reject(new Error('Request timeout'))
+      });
+
+      req.on('uncaughtException', (err) => {
+        req.destroy();
+        reject(err);
       });
     });
   }
